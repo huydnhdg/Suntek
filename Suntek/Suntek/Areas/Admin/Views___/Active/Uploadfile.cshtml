@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Suntek.Areas.Admin.Data.UploadActiveProductModel>
+@{
+    ViewBag.Title = "Uploadfile";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Kích hoạt nhiều sản phẩm từ file Excel</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    @using (Html.BeginForm("Uploadfile", "Active", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div style="margin:10px 0px;line-height:30px;" class="container">
+            <div class="form-group">
+                <input class="form-control" type="file" name="UploadedFile" placeholder="" />
+                @if (ViewBag.mess != null)
+                {
+                    <p class="text-danger">@ViewBag.mess</p>
+                }
+            </div>
+            <div class="form-group">
+                <button type="submit" name="Submit" class="btn btn-warning"><i class="fa fa-magic" aria-hidden="true"></i> Upload file</button>
+                <a class="btn btn-danger" href="~/Data/_template_active_product.xlsx" download="/_template_active_product"><i class="fa fa-file-excel-o"></i> File mẫu</a>
+            </div>
+        </div>
+    }
+</div>
+
+@if (Model != null)
+{
+    <table class="table table-bordered table-data">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Serial</th>
+                <th>Tên sản phẩm</th>
+                <th>SĐT Khách hàng</th>
+                <th>Tên khách hàng</th>
+                <th>Địa chỉ</th>
+                <th>Quận/Huyện</th>
+                <th>Tỉnh/Thành phố</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Index</td>
+                <td>@item.Product.Serial</td>
+                <td>@item.Product.Name</td>
+                <td>@item.Customer.Phone</td>
+                <td>@item.Customer.Name</td>
+                <td>@item.Customer.Address</td>
+                <td>@item.Customer.District</td>
+                <td>@item.Customer.City</td>
+                <td>@item.Customer.Email</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+}

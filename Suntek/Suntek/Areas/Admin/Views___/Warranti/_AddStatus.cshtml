@@ -1,0 +1,44 @@
+﻿@model Suntek.Models.ProductWarranti
+@{
+
+}
+@using (Html.BeginForm("AddStatus", "Warranti"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProductWarranti</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Status,
+                      new List<SelectListItem>
+                        {
+                          new SelectListItem { Value = "" , Text = "--Trạng thái--" },
+                        new SelectListItem { Value = "0" , Text = "Mới tạo" },
+                        new SelectListItem { Value = "1" , Text = "Hoàn thành" },
+                        new SelectListItem { Value = "2" , Text = "Chuyển phiếu đến trạm" },
+                        new SelectListItem { Value = "3" , Text = "Đang xử lý" },
+                        new SelectListItem { Value = "4" , Text = "Chờ linh kiện" },
+                        new SelectListItem { Value = "5" , Text = "Hủy phiếu" },
+                        },
+                        new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thay đổi trạng thái" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

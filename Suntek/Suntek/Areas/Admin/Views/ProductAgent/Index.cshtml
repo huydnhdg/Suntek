@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<Suntek.Areas.Admin.Data.ProductAgentViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Sản phẩm đại lý</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="box-filter">
+    @using (Html.BeginForm("Index", "ProductAgent", FormMethod.Get))
+    {
+        <table class="table table-condensed">
+            <tr>
+                <td>
+                    <label>Tìm kiếm</label>
+                    @Html.TextBox("SearchString", ViewBag.SearchString as string, new { @class = "form-control", placeholder = "Tên sản phẩm, Tên đại lý , Mã serial ... " })
+                </td>
+                <td>
+                    <label>Ngày xuất kho:</label>
+
+                    @Html.TextBox("Startdate", ViewBag.Startdate as string, new { @class = "form-control", @type = "date" })
+
+                </td>
+                <td>
+                    <label></label>
+                    @Html.TextBox("Enddate", ViewBag.Enddate as string, new { @class = "form-control", @type = "date" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">                   
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Lọc dữ liệu</button>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<div style="overflow-x:auto;">
+    <table class="table table-striped table-bordered table-hover table-responsive">
+        <thead>
+            <tr>               
+                <th>Tên sản phẩm</th>
+                <th>Mã cào</th>
+                <th>Tên đại lý</th>
+                <th>Ngày nhập</th>
+                <th>Ngày tạo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Serial</td>
+                    <td>@item.AgentName</td>
+                    <td>
+                        @if (item.Importdate != null)
+                        {
+                            @Convert.ToDateTime(item.Importdate).ToString("dd/MM/yyyy")
+                        }
+                    </td>
+                    <td>
+                        @if (item.Createdate != null)
+                        {
+                            @Convert.ToDateTime(item.Createdate).ToString("dd/MM/yyyy")
+                        }
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Partner"))
+                        {
+                            <a class="btn" href="/admin/productagent/edit/@item.Id"><i class="fa fa-edit fa-fw"></i></a>
+                            <a class="btn" href="/admin/productagent/delete/@item.Id"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, SearchString = ViewBag.SearchString, Startdate = ViewBag.Startdate, Enddate = ViewBag.Enddate }))
+<p class="pageof">page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+

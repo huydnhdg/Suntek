@@ -1,0 +1,288 @@
+﻿
+@{
+    ViewBag.Title = "Bảo hành";
+    List<Suntek.Models.Province> lprovince = (List<Suntek.Models.Province>)TempData["province"];
+}
+<style>
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #dd3333;
+    }
+
+    form p {
+        padding-top: 10px;
+    }
+
+    #sends {
+        background-color: #dd3333;
+    }
+</style>
+@section scripts{
+    <script>
+        function GetDistrict() {
+            var name = $("#Province").val();
+            $("#District").html("");
+            $.ajax
+                ({
+                    url: '/Active/GetDistrict',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        name: name
+                    }),
+                    success: function (result) {
+                        $.each($.parseJSON(result), function (i, city) {
+                            $("#District").append
+                                ($('<option></option>').val(city).html(city))
+                        })
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+        //function GetWard() {
+        //    var name = $("#District").val();
+        //    $("#Ward").html("");
+        //    $.ajax
+        //        ({
+        //            url: '/Active/GetWard',
+        //            type: 'POST',
+        //            datatype: 'application/json',
+        //            contentType: 'application/json',
+        //            data: JSON.stringify({
+        //                name: name
+        //            }),
+        //            success: function (result) {
+        //                $.each($.parseJSON(result), function (i, city) {
+        //                    $("#Ward").append
+        //                        ($('<option></option>').val(city).html(city))
+        //                })
+        //            },
+        //            error: function () {
+        //                alert("Hệ thống xảy ra lỗi.")
+        //            },
+        //        });
+        //}
+        function GetCustomer() {
+            var phone = $("#Phone").val();
+            $.ajax
+                ({
+                    url: '/Active/GetCustomer',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        phone: phone
+                    }),
+                    success: function (response) {
+                        var result = $.parseJSON(response);
+                        $("#CusName").val(result.Name);
+                        $("#Address").val(result.Address);
+                        $('#Province').append(new Option(result.Province, result.Province, true, true));
+                        $('#District').append(new Option(result.District, result.District, true, true));
+                        // $('#Ward').append(new Option(result.Ward, result.Ward, true, true));
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+        function GetAgent() {
+            var name = $("#Username").val();
+            $.ajax
+                ({
+                    url: '/Active/GetAgent',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        name: name
+                    }),
+                    success: function (result) {
+                        $("#Fullname").val(result.FullName);
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+        function GetProduct() {
+            var serial = $("#Serial").val();
+            $.ajax
+                ({
+                    url: '/Warranti/GetProduct',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        serial: serial
+                    }),
+                    success: function (response) {
+                        var result = $.parseJSON(response);
+                        $("#Productname").val(result.Name);
+                        $("#Sub").val(result.Model);
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+
+        $('#sends').off('click').on('click', function () {
+            var phone = $("#Phone").val();
+            var phone2 = $("#Phone2").val();
+            var cusname = $("#CusName").val();
+            var province = $("#Province").val();
+            var district = $("#District").val();
+            // var ward = $("#Ward").val();
+            var address = $("#Address").val();
+            var serial = $("#Serial").val();
+            var prodname = $("#Productname").val();
+            var model = $("#Sub").val();
+            var note = $("#Note").val();
+            var grecap = grecaptcha.getResponse();
+
+            $.ajax({
+                url: '/Warranti/PostData',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    Phone: phone,
+                    // Phone2: phone2,
+                    CusName: cusname,
+                    Province: province,
+                    District: district,
+                    // Ward: ward,
+                    Address: address,
+                    Serial: serial,
+                    Productname: prodname,
+                    Sub: model,
+                    Note: note,
+                    reCapchar: grecap
+                },
+                success: function (response) {
+                    alert(response.Message);
+                },
+            });
+        });
+    </script>
+}
+<div class="main container">
+    <div class="title">
+        <h1>YÊU CẦU BẢO HÀNH</h1>
+        <h3>Yêu cầu bảo hành hoặc sửa chữa cho sản phẩm của Suntek khi có phát sinh bảo hành hoặc sửa chữa.</h3>
+        <div class="line-space">
+            <img src="~/Image/line_space.png" class="img-responsive" />
+        </div>
+    </div>
+    <div class="content">
+        <form>
+            <div class="form-horizontal">
+                <div class="clearfix">
+                    <div class="col-md-6">
+                        <div class="raw">
+                            <div class="tit">
+                                <h2>Thông tin khách hàng</h2>
+                            </div>
+                            <div>
+
+                                <div class="form-group">
+                                    <p class="col-md-4">ĐT liên hệ: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Phone", new { htmlAttributes = new { @class = "form-control", @onchange = "GetCustomer()" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Tên khách hàng: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("CusName", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <p class="col-md-4">ĐT khác: </p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Phone2", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>*@
+                                <div class="form-group">
+                                    <p class="col-md-4">Tỉnh/ Thành phố: *</p>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("Province", new SelectList(lprovince, "Name", "Name"), "--Thành phố--", new { onchange = "GetDistrict()", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Quận huyện: *</p>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("District", new SelectList(Enumerable.Empty<SelectListItem>(), "Name", "Name"), "--Quận--", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <p class="col-md-4">Phường xã: *</p>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("Ward", new SelectList(Enumerable.Empty<SelectListItem>(), "Name", "Name"), "--Phường--", new { @class = "form-control" })
+                                    </div>
+                                </div>*@
+                                <div class="form-group">
+                                    <p class="col-md-4">Địa chỉ: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Address", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="raw">
+                            <div class="tit">
+                                <h2>Thông tin sản phẩm</h2>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Mã cào: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Serial", new { htmlAttributes = new { @class = "form-control", @onchange = "GetProduct()" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Tên sản phẩm: </p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Productname", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Model sản phẩm: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Sub", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Mô tả lỗi: *</p>
+                                    <div class="col-md-8">
+                                        @Html.TextArea("Note", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group hidden">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <div class="g-recaptcha" data-sitekey="6LeVE4YUAAAAAP9ChlIU4Dh4GW8kB6hRSynryVrX"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-8 col-md-offset-4 txt-cl">Lưu ý: Dòng có dấu (*) là bắt buộc</p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <button type="button" class="btn btn-primary" id="sends">Gửi yêu cầu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

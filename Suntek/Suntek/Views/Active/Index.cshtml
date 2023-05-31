@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "Kích hoạt";
+    Layout = "~/Views/Shared/_LayoutHomePage.cshtml";
+    List<Suntek.Models.Province> lprovince = (List<Suntek.Models.Province>)TempData["province"];
+    var banner = ViewBag.Banner;
+}
+
+<style>
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #dd3333;
+    }
+
+    form p {
+        padding-top: 10px;
+    }
+
+    #sends {
+        background-color: #dd3333;
+    }
+</style>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var serial = $("#serial").val();
+            if (serial.length > 0) {
+                $.ajax({
+                    url: '/Active/GetProduct',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        serial: serial
+                    }),
+                    success: function (result) {
+                        if (result != null) {
+                        } else {
+                            alert("sản phẩm không tồn tại.");
+                        }
+                    },
+                    error: function () {
+                        alert("Đã có lỗi xảy ra. Vui lòng liên hệ Hotline...")
+                    },
+                });
+            }
+        });
+        function GetDistrict() {
+            var name = $("#Province").val();
+            $("#District").html("");
+            $.ajax
+                ({
+                    url: '/Active/GetDistrict',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        name: name
+                    }),
+                    success: function (result) {
+                        $.each($.parseJSON(result), function (i, city) {
+                            $("#District").append
+                                ($('<option></option>').val(city).html(city))
+                        })
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+        //function GetWard() {
+        //    var name = $("#District").val();
+        //    $("#Ward").html("");
+        //    $.ajax
+        //        ({
+        //            url: '/Active/GetWard',
+        //            type: 'POST',
+        //            datatype: 'application/json',
+        //            contentType: 'application/json',
+        //            data: JSON.stringify({
+        //                name: name
+        //            }),
+        //            success: function (result) {
+        //                $.each($.parseJSON(result), function (i, city) {
+        //                    $("#Ward").append
+        //                        ($('<option></option>').val(city).html(city))
+        //                })
+        //            },
+        //            error: function () {
+        //                alert("Hệ thống xảy ra lỗi.")
+        //            },
+        //        });
+        //}
+        function GetCustomer() {
+            var phone = $("#Phone").val();
+            $.ajax
+                ({
+                    url: '/Active/GetCustomer',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        phone: phone
+                    }),
+                    success: function (response) {
+                        var result = $.parseJSON(response);
+                        $("#CusName").val(result.Name);
+                        $("#Address").val(result.Address);
+                        $('#Province').append(new Option(ob.Province, ob.Province, true, true));
+                        $('#District').append(new Option(ob.District, ob.District, true, true));
+                        // $('#Ward').append(new Option(ob.Ward, ob.Ward, true, true));
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+        function GetAgent() {
+            var name = $("#Username").val();
+            $.ajax
+                ({
+                    url: '/Active/GetAgent',
+                    type: 'POST',
+                    datatype: 'application/json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        name: name
+                    }),
+                    success: function (response) {
+                        var result = $.parseJSON(response);
+                        $("#Fullname").val(result.FullName);
+                    },
+                    error: function () {
+                        alert("Hệ thống xảy ra lỗi.")
+                    },
+                });
+        }
+
+        $('#sends').off('click').on('click', function () {
+            var phone = $("#Phone").val();
+            var cusname = $("#CusName").val();
+            var province = $("#Province").val();
+            var district = $("#District").val();
+            // var ward = $("#Ward").val();
+            var address = $("#Address").val();
+            var serial = $("#Serial").val();
+            var buydate = $("#Buydate").val();
+            var grecap = grecaptcha.getResponse();
+            
+            $.ajax({
+                url: '/Active/PostData',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    Phone: phone,
+                    CusName: cusname,
+                    Province: province,
+                    District: district,
+                    // Ward: ward,
+                    Address: address,
+                    Serial: serial,
+                    Buydate: buydate,
+                    reCapchar: grecap
+                },
+                success: function (response) {
+                    alert(response.Message);
+                },
+            });
+        });
+    </script>
+}
+<div class="main container">
+    <div class="title">
+        <h1>KÍCH HOẠT BẢO HÀNH</h1>
+        <h3>Kích hoạt bảo hành cho các sản phẩm của Suntek bằng Mã cào.</h3>
+        <div class="line-space">
+            <img src="~/Image/line_space.png" class="img-responsive" />
+        </div>
+    </div>
+    <div class="content">
+        <form>
+            <div class="form-horizontal">
+                <div class="clearfix">
+                    <div class="col-md-6">
+                        <div class="raw">
+                            <div class="tit">
+                                <h2>Thông tin khách hàng</h2>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <p class="col-md-4">ĐT liên hệ: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Phone", new { htmlAttributes = new { @class = "form-control" ,@onchange = "GetCustomer()" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Tên khách hàng: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("CusName", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Tỉnh/ Thành phố: *</p>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("Province", new SelectList(lprovince, "Name", "Name"), "--Thành phố--", new { onchange = "GetDistrict()", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Quận huyện: *</p>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("District", new SelectList(Enumerable.Empty<SelectListItem>(), "Name", "Name"), "--Quận--", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <p class="col-md-4">Phường xã: *</p>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("Ward", new SelectList(Enumerable.Empty<SelectListItem>(), "Name", "Name"), "--Phường--", new { @class = "form-control" })
+                                    </div>
+                                </div>*@
+                                <div class="form-group">
+                                    <p class="col-md-4">Địa chỉ: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Address", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="raw">
+                            <div class="tit">
+                                <h2>Thông tin sản phẩm</h2>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Mã cào: *</p>
+                                    <div class="col-md-8">
+                                        @if (ViewBag.serial != null)
+                                        {
+                                            @Html.Editor("Serial", new { htmlAttributes = new { @class = "form-control",@value=ViewBag.serial } })
+                                        }
+                                        else
+                                        {
+                                            @Html.Editor("Serial", new { htmlAttributes = new { @class = "form-control" } })
+                                        }
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Ngày mua: </p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Buydate", new { htmlAttributes = new { @class = "form-control",@type="date" } })
+                                    </div>
+                                </div>
+                                <div class="form-group hidden">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <div class="g-recaptcha" data-sitekey="6LeVE4YUAAAAAP9ChlIU4Dh4GW8kB6hRSynryVrX"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-8 col-md-offset-4 txt-cl">Lưu ý: Dòng có dấu (*) là bắt buộc</p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <button type="button" class="btn btn-primary" id="sends">Gửi yêu cầu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </form>
+    </div>
+</div>

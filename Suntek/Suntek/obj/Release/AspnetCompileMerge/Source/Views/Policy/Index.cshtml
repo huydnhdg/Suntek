@@ -1,0 +1,85 @@
+﻿@*@model Suntek.Models.Article*@
+@{
+    ViewBag.Title = "Chính sách bảo hành";
+}
+<style>
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #dd3333;
+    }
+
+    form p {
+        padding-top: 10px;
+    }
+
+    #sends {
+        background-color: #dd3333;
+    }
+
+    p a {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+</style>
+@section scripts{
+    <script>
+
+    </script>
+}
+<div class="main container">
+    <div class="title">
+        <h3>Thông tin về chính sách bảo hành của Suntek.</h3>
+        <a href="/bai-viet/chinh-sach-bao-hanh" title="CHÍNH SÁCH BẢO HÀNH" style="color: #dd3333">
+            CHÍNH SÁCH BẢO HÀNH
+        </a>
+        @*<p>
+            @if (Model.Title == "CHÍNH SÁCH BẢO HÀNH")
+            {
+                <a href="/bai-viet/chinh-sach-bao-hanh" title="CHÍNH SÁCH BẢO HÀNH" style="color: #dd3333">
+                    CHÍNH SÁCH BẢO HÀNH
+                </a>
+            }
+            else
+            {
+                <a href="/bai-viet/chinh-sach-bao-hanh" title="CHÍNH SÁCH BẢO HÀNH">
+                    CHÍNH SÁCH BẢO HÀNH
+                </a>
+            }
+            @if (Model.Title == "CHÍNH SÁCH BẢO MẬT THÔNG TIN")
+            {
+                <a href="/bai-viet/chinh-sach-bao-mat-thong-tin" title="CHÍNH SÁCH BẢO MẬT THÔNG TIN" style="color: #dd3333">
+                    CHÍNH SÁCH BẢO MẬT THÔNG TIN
+                </a>
+            }
+            else
+            {
+                <a href="/bai-viet/chinh-sach-bao-mat-thong-tin" title="CHÍNH SÁCH BẢO MẬT THÔNG TIN">
+                    CHÍNH SÁCH BẢO MẬT THÔNG TIN
+                </a>
+            }
+            @if (Model.Title == "HƯỚNG DẪN SỬ DỤNG")
+            {
+                <a href="/bai-viet/huong-dan-su-dung" title="HƯỚNG DẪN SỬ DỤNG" style="color: #dd3333">
+                    HƯỚNG DẪN SỬ DỤNG
+                </a>
+            }
+            else
+            {
+                <a href="/bai-viet/huong-dan-su-dung" title="HƯỚNG DẪN SỬ DỤNG">
+                    HƯỚNG DẪN SỬ DỤNG
+                </a>
+            }
+
+        </p>*@
+        <div class="line-space">
+            <img src="~/Image/line_space.png" class="img-responsive" />
+        </div>
+    </div>
+    <div class="content">
+        <div style="padding-top:25px;"></div>
+        @*@Html.Raw(Model.Details)*@
+    </div>
+</div>
+
+

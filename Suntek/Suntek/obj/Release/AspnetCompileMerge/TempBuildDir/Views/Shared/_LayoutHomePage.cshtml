@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+@{
+    var banner = ViewBag.Banner;
+    var footer1 = ViewBag.Footer;
+    var logo = ViewBag.Logo;
+    var hotline = ViewBag.HotLine;
+}
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suntek Việt Nam</title>
+    <meta name="keywords" content="Năng lượng mặt trời, Đèn năng lượng mặt trời, Thiếu bị năng lượng mặt trời, Hòa lưới điện năng lượng mặt trời." />
+    <meta name="description" content="SUNTEK Solar là nhà sản xuất các thiết bị về Tấm pin năng lượng mặt trời, Đèn Chiếu sáng năng lượng mặt trời, Bộ lưu trữ sử dụng năng lượng mặt trời với công suất đa dạng, Tính năng vượt trội, Bảo hành dài hạn." />
+    <meta property="og:site_name" content="CÔNG TY TNHH SUNTEK VIỆT NAM" />
+    <meta property="og:image" content="https://suntek.vn/images/banners/original/3_1614680016_1616741761.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:title" content='' />
+    <meta property="og:url" content="http://suntek.vn/" />
+    <meta property="og:description" content="SUNTEK là nhà sản xuất các thiết bị về Tấm pin năng lượng mặt trời, Đèn Chiếu sáng năng lượng mặt trời, Bộ lưu trữ sử dụng năng lượng mặt trời với công suất đa dạng..." />
+    <meta property="fb:app_id" content="930343043734339" />
+
+    <meta name='author' content='CÔNG TY TNHH SUNTEK VIỆT NAM' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="DC.title" content="SUNTEK - Điện năng lượng mặt trời" />
+    <meta name="geo.region" content="VN-HN" />
+    <meta name="geo.placename" content="Ha Noi" />
+    <meta name="geo.position" content="21.023925, 105.855053" />
+    <meta name="ICBM" content="21.023925, 105.855053" />
+    <meta name="REVISIT-AFTER" content="1 DAYS" />
+    <meta name="RATING" content="GENERAL" />
+    <meta http-equiv="REFRESH" content="1800" />
+
+    <link rel="canonical" href="http://suntek.vn/" />
+    <link rel="alternate" media="handheld" href="http://suntek.vn/" />
+    <link rel="alternate" href="http://suntek.vn/" hreflang="x" />
+    <link type='image/x-icon' href='https://suntek.vn/images/favicon.ico' rel='icon' />
+    <link rel="alternate" type="application/rss+xml" title="CÔNG TY TNHH SUNTEK VIỆT NAM Feed" href="https://suntek.vn/rss.xml" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    <link href="~/Content/sb-admin.css" rel="stylesheet" />
+    <link href="~/Content/hover-min.css" rel="stylesheet" />
+    <style>
+
+        body {
+            padding: 0;
+            background-color: white;
+        }
+
+        .header {
+            overflow: hidden;
+            clear: both;
+            background-color: #ddd;
+        }
+
+        .logo {
+            float: left;
+            overflow: hidden;
+            padding-top: 25px;
+            padding-bottom: 25px
+        }
+
+            .logo img {
+                max-width: 200px;
+            }
+
+        .hotline {
+            float: right;
+            overflow: hidden;
+        }
+
+        .menu {
+            clear: both;
+            overflow: hidden;
+        }
+
+            .menu a {
+                font-weight: bold;
+            }
+
+        .navbar {
+            margin-bottom: 0;
+        }
+
+        .navbar-nav > li > a {
+            padding: 15px 15px;
+        }
+
+        .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+            color: #dd3333;
+        }
+
+        .hvr-underline-from-center:before {
+            background: #dd3333;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+            .title img {
+                margin: 0 auto;
+            }
+
+        .hotline {
+            padding-top: 30px;
+        }
+
+            .hotline a {
+                font-weight: bold;
+                font-size: 18px;
+                color: #777;
+            }
+
+            .hotline ul li {
+                float: left;
+                font-size: 18px;
+                font-weight: bold;
+                padding-left: 50px;
+            }
+
+                .hotline ul li a {
+                    color: #777;
+                }
+
+                    .hotline ul li a:hover {
+                        text-decoration: none;
+                    }
+
+                    .hotline ul li a img {
+                        max-width: 150px;
+                    }
+
+        .navbar-toggle {
+            float: left;
+        }
+
+        .footer {
+            background-color: #ddd;
+        }
+
+        footer {
+            padding-top: 30px;
+            padding-bottom: 100px;
+        }
+
+        h3 {
+            font-size: 14px;
+        }
+
+        h5 {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        h6 {
+            font-size: 14px;
+            color: #777;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+            ul li {
+                list-style: none;
+            }
+
+                ul li a h6 {
+                    font-size: 13px;
+                }
+
+        .txt-cl {
+            color: red;
+        }
+
+        .login {
+            font-size: 18px;
+            padding-top: 20px;
+            padding-left: 50px;
+        }
+
+            .login a {
+                color: #777;
+            }
+
+                .login a:hover {
+                    text-decoration: none;
+                }
+
+        .hl-menu-mb {
+            display: none;
+        }
+
+        .footer div {
+            margin-bottom: 35px;
+        }
+
+        .f-left h5 {
+            color: #dd3333;
+        }
+
+        @@media(max-width:768px) {
+            .hl-menu-mb {
+                display: block;
+            }
+
+                .hl-menu-mb a {
+                    color: #777;
+                }
+
+            .hotline ul li:first-child {
+                display: none;
+            }
+
+            .logo {
+                float: none;
+            }
+
+                .logo img {
+                    margin: auto;
+                    max-width: 100px;
+                }
+
+            .login {
+                padding-left: 0px;
+                padding-top: 0;
+            }
+
+            .hotline {
+                float: none;
+                text-align: center;
+                padding-top: 0;
+            }
+
+                .hotline ul li {
+                    float: none;
+                    padding-left: 0;
+                }
+        }
+
+        .fa {
+            color: #dd3333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                @*<a href="~/" title="CÔNG TY TNHH SUNTEK VIỆT NAM">
+                        <img src="~/Image/logo-st.png" alt="SUNTEK VIỆT NAM" class="img-responsive" style="max-width:250px;">
+                    </a>*@
+                <a href="~/" title="CÔNG TY TNHH SUNTEK VIỆT NAM">
+                    <img src="@logo.Image" alt="SUNTEK VIỆT NAM" class="img-responsive" style="max-width:250px;">
+                </a>
+            </div>
+            <div class="hotline">
+                <ul>
+                    <li>
+                        <div style="float:left;padding-right:20px;">
+                            <img src="~/Image/ic-hotline.png" style="max-width:50px;" />
+                            @Html.Raw(hotline.Detail)
+                            @*<a href="tel:02466522661">0246.652.2661</a>*@
+                        </div>
+                        @*<div>
+                                <a href="tel:02466854999">024 665 22 661</a>
+                                <a href="tel:0837197997" style="padding-right:50px;">083.719.79.97</a>
+                            </div>*@
+                    </li>
+                    <li>
+                        @if (User.Identity.Name != "")
+                        {
+                            <a href="~/thong-tin-dai-ly" title="Truy cập trang quản lý">
+                                @User.Identity.Name
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/account/login" title="đăng nhập">
+                                Đăng nhập
+                            </a>
+                        }
+
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="hl-menu-mb" style="float:right;margin-top:5px;">
+                            <div style="float:left">
+                                <img src="~/Image/ic-hotline.png" style="width:40px;" />
+                                @*@Html.Raw(hotline.Detail)*@
+                            </div>
+                            @*<div style="float:left;padding-left:5px;">
+                                <a href="tel:02466854999">
+                                    024 668 54 999
+                                </a><br />
+                                <a href="tel:0837197997" style="padding-right:50px;">
+                                    083 719 79 97
+                                </a>
+                            </div>*@
+                        </div>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="~/" class="hvr-underline-from-center">TRANG CHỦ</a></li>
+                            <li><a href="/kich-hoat" class="hvr-underline-from-center">KÍCH HOẠT BẢO HÀNH</a></li>
+                            <li><a href="/tra-cuu" class="hvr-underline-from-center">TRA CỨU BẢO HÀNH</a></li>
+                            <li><a href="/bao-hanh" class="hvr-underline-from-center">YÊU CẦU BẢO HÀNH, SỬA CHỮA</a></li>
+                            <li><a href="/tram-bao-hanh" class="hvr-underline-from-center">TRẠM BẢO HÀNH</a></li>
+                            <li><a href="/chinh-sach-bao-hanh" class="hvr-underline-from-center">CHÍNH SÁCH BẢO HÀNH</a></li>
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </div>
+        </nav>
+
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    <div class="footer">
+        <footer class="container" style="padding-bottom:0px;">
+            @Html.Raw(footer1.Detail)
+            @*<div class="col-md-5">
+                    <div class="f-left">
+                        <h5><strong><span style="font-size:16px;">CÔNG TY TNHH SUNTEK VIỆT NAM</span></strong></h5>
+                        <h5>TRỤ SỞ CHÍNH</h5>
+                        <h6><i class="fa fa-map-marker"></i> Địa chỉ: 83B Nguyễn Khang, P.Yên Hòa, Q.Cầu Giấy, Hà Nội</h6>
+                        <h6><i class="fa fa-phone"></i> (+84) 24 6 296 8284</h6>
+                        <h6><i class="fa fa-info"></i> Mã số DN: 0102458938</h6>
+                        <h6><i class="fa fa-globe"></i><a href="https://suntek.vn"> Website: suntek.vn</a></h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="f-left">
+                        <h5>TRUNG TÂM CHĂM SÓC KHÁCH HÀNG</h5>
+                        <h5>Hà Nội: (Sáng: 8h - 12h/Chiều: 1h30 - 5h30)</h5>
+                        <h6><i class="fa fa-map-marker"></i> Tầng 3, 83B Nguyễn Khang, P.Yên Hòa, Q.Cầu Giấy, Hà Nội</h6>
+                        <h6><i class="fa fa-phone"></i> Tel: 024 665 22 661</h6>
+                        <h5>Tp. Hồ Chí Minh:</h5>
+                        <h6><i class="fa fa-phone"></i> Tel: 024 667 26 888</h6>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="f-left">
+                        <h5>KHO XƯỞNG</h5>
+                        <h6><i class="fa fa-map-marker"></i> Ngõ 219 Trung Kính ( Sau tòa nhà Center Point ), P.Yên Hòa, Q.Cầu Giấy, Tp.Hà Nội</h6>
+                        <h6><i class="fa fa-map-marker"></i> Số 06-TT Văn Giang , H.Văn Giang ,T.Hưng Yên</h6>
+                        <h5>XƯỞNG SẢN XUẤT</h5>
+                        <h6><i class="fa fa-map-marker"></i> KM15, QL5, Thôn Đình Dù, X.Bình Dù, H.Văn Lâm - T.Hưng Yên.</h6>
+                    </div>
+                </div>*@
+        </footer>
+        <p style="text-align:center; border-top:1px solid #fff">© 2021 Suntek</p>
+    </div>
+
+    <script src="~/Areas/Admin/Content/js/jquery-1.10.2.js"></script>
+    <script src="~/Areas/Admin/Content/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <script src="~/Areas/Admin/Content/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Areas/Admin/Content/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <script src="~/Areas/Admin/Content/js/sb-admin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+
+    <script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

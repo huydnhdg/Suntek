@@ -1,0 +1,59 @@
+﻿
+<ul class="nav" id="side-menu">
+
+    <li>
+        <a href="/admin/home"><i class="fa fa-tachometer" aria-hidden="true"></i> Thống kê</a>
+    </li>
+    @if (User.IsInRole("Partner"))
+    {
+        <li>
+            <a href="/admin/product"><i class="fa fa-gift" aria-hidden="true"></i> Sản phẩm</a>
+        </li>
+        <li>
+            <a href="/admin/customer"><i class="fa fa-users" aria-hidden="true"></i> Khách hàng</a>
+        </li>
+        <li>
+            <a href="/admin/active"><i class="fa fa-cogs" aria-hidden="true"></i> Kích hoạt</a>
+        </li>
+        <li>
+            <a href="/admin/warranti"><i class="fa fa-wrench fa-fw"></i> Bảo hành</a>
+        </li>
+        <li>
+            <a href="/admin/key"><i class="fa fa-ambulance" aria-hidden="true"></i> Trạm bảo hành</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> NPP/Đại lý<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="/admin/agent">DS NPP/Đại lý</a>
+                </li>
+                <li>
+                    <a href="/admin/productagent">DS Sản phẩm</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/admin/article"><i class="fa fa-file-word-o"></i> Bài viết</a>
+        </li>
+        <li>
+            <a href="/admin/banner"><i class="fa fa-picture-o"></i> Banner</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Tài khoản<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                @*<li>
+                        <a href="/admin/managerole">List Role</a>
+                    </li>*@
+                <li>
+                    <a href="/admin/manageuser">List User</a>
+                </li>
+            </ul>
+        </li>
+    }
+    else if (User.IsInRole("Key"))
+    {
+        <li>
+            <a href="/admin/warranti"><i class="fa fa-wrench fa-fw"></i> Bảo hành</a>
+        </li>
+    }
+</ul>

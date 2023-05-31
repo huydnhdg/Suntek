@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Bảo hành điện tử";
+    var banner = ViewBag.Banner;
+}
+
+<style>
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #dd3333;
+    }
+
+    form p {
+        padding-top: 10px;
+    }
+
+    #sends {
+        background-color: #dd3333;
+    }
+
+    .h-box {
+        overflow: hidden;
+    }
+
+        .h-box .h-box-ct {
+            margin: auto;
+            margin-top: 30px;
+        }
+
+    .h-box-ct {
+        width: 63%;
+        text-align: center;
+        padding: 20px 30px;
+        border: 1px solid #dd3333;
+        border-radius: 15px;
+    }
+
+        .h-box-ct:hover {
+            background-color: #dd3333;
+            color: white;
+        }
+
+        .h-box-ct p {
+            margin-bottom: 0;
+        }
+
+        .h-box-ct:hover p {
+            color: white !important;
+        }
+
+        .h-box-ct:hover .at {
+            display: block !important;
+        }
+
+        .h-box-ct:hover .nat {
+            display: none !important;
+        }
+
+        .h-box-ct a {
+            text-decoration: none;
+        }
+
+        .h-box-ct img {
+            margin: 0 auto;
+            max-width: 50px;
+        }
+
+        .h-box-ct p {
+            font-weight: bold;
+            color: black;
+        }
+
+    .bot-ic {
+        width: 70%;
+        margin: auto;
+    }
+
+    .txt-des-ic {
+        text-align: center;
+        padding: 10px 30px;
+    }
+
+    @@media (max-width:768px) {
+        .bot-ic {
+            width: 100%;
+        }
+    }
+</style>
+@section scripts{
+    <script>
+
+    </script>
+}
+@*@{Html.RenderAction("LoadBanner", "Home");}*@
+<div class="banner">
+    @*<div class="row no-gutters">
+            <img src="~/Image/banner-st.jpg" alt="banner-suntek" class="img-responsive nat" />
+        </div>*@
+    @foreach (var banner1 in banner)
+    {        
+        <div class=" no-gutters">
+            <img style="width:100%" src="@banner1.Link" alt="banner-suntek" class="img-responsive nat" />
+        </div>
+    }
+</div>
+<div class="main container" style="padding-top:10px">
+    <div class="clearfix">
+        <div style="overflow: hidden">
+            <div class="col-md-4">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/kich-hoat" title="kích hoạt bảo hành">
+                            <img src="~/Image/h-kich-hoat.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-kich-hoat-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>KÍCH HOẠT BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Kích hoạt bảo hành cho các sản phẩm của APE bằng Mã cào.</p>*@
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/tra-cuu" title="tra cứu bảo hành">
+                            <img src="~/Image/h-tra-cuu.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-tra-cuu-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>TRA CỨU BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Tra cứu thông tin hạn bảo hành của một sản phẩm của APE bằng Mã cào hoặc số điện thoại khách hàng.</p>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="h-box">
+                    <div class="h-box-ct" style="padding:10px 30px;">
+                        <a href="/bao-hanh" title="yêu cầu bảo hành">
+                            <img src="~/Image/h-yeu-cau.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-yeu-cau-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>YÊU CẦU BẢO HÀNH, SỬA CHỮA</p>
+                        </a>
+                    </div>
+                </div>
+                @*<p class="txt-des-ic">Yêu cầu bảo hành hoặc sửa chữa cho sản phẩm của APE khi có phát sinh bảo hành hoặc sửa chữa.</p>*@
+            </div>
+        </div>
+        <div style="overflow:hidden;" class="bot-ic">
+            <div class="col-md-6">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/tram-bao-hanh" title="trạm bảo hành">
+                            <img src="~/Image/h-tram.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-tram-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>TRẠM BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Địa chỉ các TTBH của APE trên toàn quốc.</p>*@
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/chinh-sach-bao-hanh" title="chính sách bảo hành">
+                            <img src="~/Image/h-huong-dan.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-huong-dan-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>CHÍNH SÁCH BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Thông tin về chính sách bảo hành của APE.</p>*@
+                </div>
+            </div>
+        </div>
+        <p class="text-center" style="padding-top:30px;">
+            <b>
+                Đối với Quý khách hàng, chúng tôi luôn mang đến những sản phẩm với chất lượng tốt nhất. <br />
+                Cùng với đó, sự quan tâm hàng đầu của chúng tôi là đặc biệt chú trọng đến dịch vụ chăm sóc, bảo hành trong suốt vòng đời sản phẩm.
+            </b>
+        </p>
+    </div>
+</div>
+
+

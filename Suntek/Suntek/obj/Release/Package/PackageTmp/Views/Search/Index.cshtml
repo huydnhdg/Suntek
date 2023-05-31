@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "Tra cứu";
+}
+<style>
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #dd3333;
+    }
+
+    form p {
+        padding-top: 10px;
+    }
+
+    #sends {
+        background-color: #dd3333;
+    }
+
+    h4 {
+        border-bottom: 1px solid;
+    }
+</style>
+@section scripts{
+    <script>
+        $('#sends').off('click').on('click', function () {
+            $("#mlog").empty();
+            var serial = $("#Serial").val();
+            var buydate = $("#Buydate").val();
+            var grecap = grecaptcha.getResponse();
+            $.ajax({
+                url: '/Search/PostData',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    Serial: serial,
+                    Buydate: buydate,
+                    reCapchar: grecap
+                },
+                success: function (response) {
+                    var result = $.parseJSON(response);
+                    alert(result.Message);
+                    if (result.Active.Productname != null) {
+                        $("#mname").text(result.Active.Productname);
+                        $("#mserial").text(result.Active.Serial);
+                        $("#mmodel").text(result.Active.Model);
+                        $("#mlimited").text(result.Active.Limited);
+                        $("#mactive").text(result.Active.Activedate);
+                        $("#mend").text(result.Active.Enddate);
+                        $("#mbuy").text(result.Active.Buydate);
+
+                        $("#box-active").css("display", "block");
+                        $("#box-warr").css("display", "block");
+                        if (result.Log.length > 0) {
+                            for (var i = 0; i < result.Log.length; i++) {
+                                var log = result.Log[i];
+                                $("#mlog").append('<span>' + log + '</span><br/>');
+                            }
+                            //$("#box-warr").css("display", "block");
+                        }
+                    }
+
+
+                },
+            });
+        });
+    </script>
+}
+<div class="main">
+    <div class="title">
+        <h1>TRA CỨU BẢO HÀNH</h1>
+        <h3>Tra cứu thông tin hạn bảo hành của một sản phẩm của Suntek bằng Mã cào hoặc số điện thoại khách hàng.</h3>
+        <div class="line-space">
+            <img src="~/Image/line_space.png" class="img-responsive" />
+        </div>
+    </div>
+    <div class="content">
+        <form>
+            <div class="form-horizontal">
+                <div class="clearfix">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="raw">
+                            <div class="tit">
+                                <h2>Tra cứu bằng Mã cào</h2>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Mã cào: *</p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Serial", new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-4">Ngày mua: </p>
+                                    <div class="col-md-8">
+                                        @Html.Editor("Buydate", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                    </div>
+                                </div>
+                                <div class="form-group hidden">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <div class="g-recaptcha" data-sitekey="6LeVE4YUAAAAAP9ChlIU4Dh4GW8kB6hRSynryVrX"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="col-md-8 col-md-offset-4 txt-cl">Lưu ý: Dòng có dấu (*) là bắt buộc</p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <button type="button" class="btn btn-primary" id="sends">Gửi yêu cầu</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-md-6" id="box-active" style="display:none">
+                            <div class="form-group alert alert-success">
+                                <h4>Thông tin kích hoạt</h4>
+                                <div class="col-md-6 col-xs-6">
+                                    <p>Tên sản phẩm</p>
+                                    <p>Mã cào</p>
+                                    <p>Model sản phẩm</p>
+                                    <p>Hạn bảo hành/tháng</p>
+                                    <p>Ngày kích hoạt</p>
+                                    <p>Ngày hết hạn</p>
+                                    <p>Ngày mua</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <p id="mname"></p>
+                                    <p id="mserial"></p>
+                                    <p id="mmodel"></p>
+                                    <p id="mlimited"></p>
+                                    <p id="mactive"></p>
+                                    <p id="mend"></p>
+                                    <p id="mbuy"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="box-warr" style="display:none">
+
+                            <div class="form-group alert alert-warning">
+                                <h4>Thông tin bảo hành</h4>
+                                <p id="mlog"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

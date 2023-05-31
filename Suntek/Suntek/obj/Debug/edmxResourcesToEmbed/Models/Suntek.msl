@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SuntekModelStoreContainer" CdmEntityContainer="SuntekEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="SuntekModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="SuntekModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="SuntekModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="SuntekModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="SuntekModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Createby" ColumnName="Createby" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brandname">
+      <EntityTypeMapping TypeName="SuntekModel.Brandname">
+        <MappingFragment StoreEntitySet="Brandname">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Createby" ColumnName="Createby" />
+          <ScalarProperty Name="PhoneSend" ColumnName="PhoneSend" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="SuntekModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+          <ScalarProperty Name="FormalName" ColumnName="FormalName" />
+          <ScalarProperty Name="CountryType" ColumnName="CountryType" />
+          <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
+          <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
+          <ScalarProperty Name="Capital" ColumnName="Capital" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+          <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
+          <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
+          <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="Flags" ColumnName="Flags" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="SuntekModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Createby" ColumnName="Createby" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="District">
+      <EntityTypeMapping TypeName="SuntekModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PieName">
+      <EntityTypeMapping TypeName="SuntekModel.PieName">
+        <MappingFragment StoreEntitySet="PieName">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name1" ColumnName="Name1" />
+          <ScalarProperty Name="Name2" ColumnName="Name2" />
+          <ScalarProperty Name="Name3" ColumnName="Name3" />
+          <ScalarProperty Name="Name4" ColumnName="Name4" />
+          <ScalarProperty Name="Name5" ColumnName="Name5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="SuntekModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="MadeIn" ColumnName="MadeIn" />
+          <ScalarProperty Name="Exportdate" ColumnName="Exportdate" />
+          <ScalarProperty Name="Arisingdate" ColumnName="Arisingdate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Limited" ColumnName="Limited" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Createby" ColumnName="Createby" />
+          <ScalarProperty Name="Importdate" ColumnName="Importdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductActive">
+      <EntityTypeMapping TypeName="SuntekModel.ProductActive">
+        <MappingFragment StoreEntitySet="ProductActive">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Activedate" ColumnName="Activedate" />
+          <ScalarProperty Name="Activeby" ColumnName="Activeby" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Buydate" ColumnName="Buydate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAgent">
+      <EntityTypeMapping TypeName="SuntekModel.ProductAgent">
+        <MappingFragment StoreEntitySet="ProductAgent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Createby" ColumnName="Createby" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Importdate" ColumnName="Importdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductWarranti">
+      <EntityTypeMapping TypeName="SuntekModel.ProductWarranti">
+        <MappingFragment StoreEntitySet="ProductWarranti">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="PhoneWarranti" ColumnName="PhoneWarranti" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Createby" ColumnName="Createby" />
+          <ScalarProperty Name="Checkdate" ColumnName="Checkdate" />
+          <ScalarProperty Name="Checkby" ColumnName="Checkby" />
+          <ScalarProperty Name="KeyWarranti" ColumnName="KeyWarranti" />
+          <ScalarProperty Name="Fixer" ColumnName="Fixer" />
+          <ScalarProperty Name="Waitdate" ColumnName="Waitdate" />
+          <ScalarProperty Name="Solution" ColumnName="Solution" />
+          <ScalarProperty Name="Request" ColumnName="Request" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Curator" ColumnName="Curator" />
+          <ScalarProperty Name="CateService" ColumnName="CateService" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province">
+      <EntityTypeMapping TypeName="SuntekModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SendMT">
+      <EntityTypeMapping TypeName="SuntekModel.SendMT">
+        <MappingFragment StoreEntitySet="SendMT">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+          <ScalarProperty Name="Command_Code" ColumnName="Command_Code" />
+          <ScalarProperty Name="Message_Type" ColumnName="Message_Type" />
+          <ScalarProperty Name="Request_ID" ColumnName="Request_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempBrandname">
+      <EntityTypeMapping TypeName="SuntekModel.TempBrandname">
+        <MappingFragment StoreEntitySet="TempBrandname">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShowName" ColumnName="ShowName" />
+          <ScalarProperty Name="TempSearch" ColumnName="TempSearch" />
+          <ScalarProperty Name="TempActive" ColumnName="TempActive" />
+          <ScalarProperty Name="TempWarranti" ColumnName="TempWarranti" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Activeweb" ColumnName="Activeweb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TemplateMT">
+      <EntityTypeMapping TypeName="SuntekModel.TemplateMT">
+        <MappingFragment StoreEntitySet="TemplateMT">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Tsearch" ColumnName="Tsearch" />
+          <ScalarProperty Name="Tactive" ColumnName="Tactive" />
+          <ScalarProperty Name="Twarranti" ColumnName="Twarranti" />
+          <ScalarProperty Name="Tsearchok" ColumnName="Tsearchok" />
+          <ScalarProperty Name="Tactiveok" ColumnName="Tactiveok" />
+          <ScalarProperty Name="Twarrantiok" ColumnName="Twarrantiok" />
+          <ScalarProperty Name="Tactive_not" ColumnName="Tactive_not" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempSms">
+      <EntityTypeMapping TypeName="SuntekModel.TempSms">
+        <MappingFragment StoreEntitySet="TempSms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Command_Code" ColumnName="Command_Code" />
+          <ScalarProperty Name="Hotline" ColumnName="Hotline" />
+          <ScalarProperty Name="ActiveSms" ColumnName="ActiveSms" />
+          <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+          <ScalarProperty Name="ActiveByAgent" ColumnName="ActiveByAgent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ward">
+      <EntityTypeMapping TypeName="SuntekModel.Ward">
+        <MappingFragment StoreEntitySet="Ward">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="SuntekModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="SuntekModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Partner" ColumnName="Partner" />
+          <ScalarProperty Name="IDCate" ColumnName="IDCate" />
+          <ScalarProperty Name="CountView" ColumnName="CountView" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banner">
+      <EntityTypeMapping TypeName="SuntekModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="Partner" ColumnName="Partner" />
+          <ScalarProperty Name="IDCate" ColumnName="IDCate" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
